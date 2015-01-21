@@ -131,19 +131,16 @@ def compare ( mine, file ):
     return rewrite
 
 def send_email ( job ):
-    # Create a text/plain message
+    # Create a email
     msg = MIMEText('Job status has changed: \n' +
         '    %s \n' % str( job ) +
         'Please check JobMine. \n -JobMineCrawler')
 
-    sender = 'jobmine@crawler.com'
-    # you == the recipient's email address
     msg['Subject'] = 'Job Status Changed!'
     msg['From'] = email
     msg['To'] = email
 
-    # Send the message via our own SMTP server, but don't include the
-    # envelope header.
+    # Send email via gmail
     s = smtplib.SMTP('smtp.gmail.com:587')
     s.ehlo()
     s.starttls()
